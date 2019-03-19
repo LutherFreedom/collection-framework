@@ -1,8 +1,11 @@
 package com.luther.read;
 
+import com.luther.read.po.Person;
+
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
+import java.util.Objects;
 
 /**
  * PackageName: com.luther.read
@@ -26,7 +29,9 @@ public class CollectionDemo {
         personCollection.add(new Person("李四", "F"));
         personCollection.add(new Person("王五", "F"));
         personCollection.add(new Person("赵六", "F"));
-        personCollection.add("assadas");
+
+        //添加不同类型数组， 在转成数组是会报错
+//        personCollection.add("assadas");
 
         //这是集合中不同的对象都能被转成数组，且不会报错
         Object[] arrA = personCollection.toArray();
@@ -37,41 +42,16 @@ public class CollectionDemo {
         System.out.println(arrB.length);
 
         //要它有什么用？？？
-        Object[] arrC = personCollection.toArray(Person[]::new);//== toArray(value -> new Person[value])
-        System.out.println(arrC.length);
-    }
+        // Object[] arrC = personCollection.toArray(Person[]::new);//== toArray(value -> new Person[value])
+        // System.out.println(arrC.length);
 
-    static class Person {
-        private String name;
-        private String sex;
+        Collection<Person> retainCollection = new ArrayList<>();
+        retainCollection.add(new Person("张三", "F"));
 
-        public String getName() {
-            return name;
-        }
+        personCollection.retainAll(retainCollection);
+        System.out.println(personCollection.size());
 
-        public void setName(String name) {
-            this.name = name;
-        }
-
-        public String getSex() {
-            return sex;
-        }
-
-        public void setSex(String sex) {
-            this.sex = sex;
-        }
-
-        public Person() {
-        }
-
-        public Person(String name, String sex) {
-            this.name = name;
-            this.sex = sex;
-        }
-
-        public Person(Person source) {
-            this.name = source.getName();
-            this.sex = source.getSex();
-        }
+        personCollection.clear();
+        System.out.println(personCollection.size());
     }
 }

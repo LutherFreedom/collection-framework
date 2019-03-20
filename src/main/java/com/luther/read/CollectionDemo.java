@@ -53,5 +53,6 @@ public class CollectionDemo {
 
         personCollection.clear();
         System.out.println(personCollection.size());
+
     }
 }

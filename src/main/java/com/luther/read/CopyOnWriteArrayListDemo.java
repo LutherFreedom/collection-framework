@@ -21,12 +21,19 @@ public class CopyOnWriteArrayListDemo {
         people.add(new Person("Ccc", "F"));
         people.add(new Person("Dddd", "M"));
         people.add(new Person("Eee", "F"));
+        for (int i=0; i<2*2*2*2*2*2*2; i++){
+            people.add(new Person("Ffff", "F"));
+        }
 
         ArrayList<Person> deletePeople = new ArrayList<>();
         deletePeople.add(new Person("Aaa", "M"));
-        deletePeople.add(new Person("Ccc", "F"));
+        deletePeople.add(new Person("Ffff", "F"));
 
         people.removeAll(deletePeople);
+
+        Person[] newEl = new Person[20];
+        System.arraycopy(people.toArray(), 0,newEl , 0, people.size() -1);
+
 
 
         System.out.println(people.get(0) == people.get(0));

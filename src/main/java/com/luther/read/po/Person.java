@@ -12,6 +12,7 @@ import java.util.Objects;
 public class Person {
     private String name;
     private String sex;
+    private int age = 0;
 
     public String getName() {
         return name;
@@ -27,6 +28,14 @@ public class Person {
 
     public void setSex(String sex) {
         this.sex = sex;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public void setAge(int age) {
+        this.age = age;
     }
 
     public Person() {
@@ -47,13 +56,14 @@ public class Person {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Person person = (Person) o;
-        return Objects.equals(name, person.name) &&
-                Objects.equals(sex, person.sex);
+        return age == person.age &&
+                name.equals(person.name) &&
+                sex.equals(person.sex);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(name, sex);
+        return Objects.hash(name, sex, age);
     }
 
     @Override
@@ -61,6 +71,7 @@ public class Person {
         return "Person{" +
                 "name='" + name + '\'' +
                 ", sex='" + sex + '\'' +
+                ", age=" + age +
                 '}';
     }
 }

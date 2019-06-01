@@ -65,9 +65,9 @@ public class ListDemo {
 
         List<Person> subList = personList.subList(1,4);
         forEach(subList);
-
-        List<Person> copyList = List.copyOf(subList);
-        copyList.add(new Person("xxx", "M"));
+//
+//        List<Person> copyList = List.copyOf(subList);
+//        copyList.add(new Person("xxx", "M"));
     }
 
     private static <E> void forEach(List<E> list) {
